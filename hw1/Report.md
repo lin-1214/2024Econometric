@@ -3,51 +3,51 @@
 ## 1. Data Visualization
 plot for y
 
-![plot for y](./plots/y.png)
+<img src="./plots/y.png" width="450" height="600">
 
 plot for x_dfy
 
-![plot for x_dfy](./plots/x_dfy.png)
+<img src="./plots/x_dfy.png" width="450" height="600">
 
 plot for x_infl
 
-![plot for x_infl](./plots/x_infl.png)
+<img src="./plots/x_infl.png" width="450" height="600">
 
 plot for x_svar
 
-![plot for x_svar](./plots/x_svar.png)
+<img src="./plots/x_svar.png" width="450" height="600">
 
 plot for x_tms
 
-![plot for x_tms](./plots/x_tms.png)
+<img src="./plots/x_tms.png" width="450" height="600">
 
 plot for x_tbl
 
-![plot for x_tbl](./plots/x_tbl.png)
+<img src="./plots/x_tbl.png" width="450" height="600">
 
 plot for x_dfr
 
-![plot for x_dfr](./plots/x_dfr.png)
+<img src="./plots/x_dfr.png" width="450" height="600">
 
 plot for x_dp
 
-![plot for x_dp](./plots/x_dp.png)
+<img src="./plots/x_dp.png" width="450" height="600">
 
 plot for x_ltr
 
-![plot for x_ltr](./plots/x_ltr.png)
+<img src="./plots/x_ltr.png" width="450" height="600">
 
 plot for x_ep
 
-![plot for x_ep](./plots/x_ep.png)
+<img src="./plots/x_ep.png" width="450" height="600">
 
 plot for x_bmr
 
-![plot for x_bmr](./plots/x_bmr.png)
+<img src="./plots/x_bmr.png" width="450" height="600">
 
 plot for x_ntis
 
-![plot for x_ntis](./plots/x_ntis.png)
+<img src="./plots/x_ntis.png" width="450" height="600">
 
 ## 2. 
 2.1. $trace(X(X'X)^{-1}X') = 11$ (calculated by R)
