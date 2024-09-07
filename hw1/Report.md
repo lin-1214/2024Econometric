@@ -1,51 +1,27 @@
 # Homework: 2024/9/4
 
 ## 1. Data Visualization
-plot for y
-
 <img src="./plots/y.png" width="450" height="600">
-
-plot for x_dfy
 
 <img src="./plots/x_dfy.png" width="450" height="600">
 
-plot for x_infl
-
 <img src="./plots/x_infl.png" width="450" height="600">
-
-plot for x_svar
 
 <img src="./plots/x_svar.png" width="450" height="600">
 
-plot for x_tms
-
 <img src="./plots/x_tms.png" width="450" height="600">
-
-plot for x_tbl
 
 <img src="./plots/x_tbl.png" width="450" height="600">
 
-plot for x_dfr
-
 <img src="./plots/x_dfr.png" width="450" height="600">
-
-plot for x_dp
 
 <img src="./plots/x_dp.png" width="450" height="600">
 
-plot for x_ltr
-
 <img src="./plots/x_ltr.png" width="450" height="600">
-
-plot for x_ep
 
 <img src="./plots/x_ep.png" width="450" height="600">
 
-plot for x_bmr
-
 <img src="./plots/x_bmr.png" width="450" height="600">
-
-plot for x_ntis
 
 <img src="./plots/x_ntis.png" width="450" height="600">
 
@@ -92,3 +68,6 @@ $b = \left( \widetilde{X}'\widetilde{X} \right)^{-1}\widetilde{X'}Y$
 The result of b
 
 ![result of Q6](./img/Q6.png)
+
+## 7. Source Code
+[Source Code](https://github.com/lin-1214/2024Econometric/blob/main/hw1/homework1.r)
