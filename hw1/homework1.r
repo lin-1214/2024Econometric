@@ -163,8 +163,8 @@ sorted_eigenvalues <- sort(eigenvalues, decreasing = TRUE)
 
 # Create a data frame for plotting
 plot_data <- data.frame(
-  Component = 1:504,
-  Eigenvalue = sorted_eigenvalues[1:504]
+  Component = 1:11,
+  Eigenvalue = sorted_eigenvalues[1:11]
 )
 
 # Create the scree plot
@@ -174,14 +174,14 @@ png("./plots/scree_plot_std2.png", width = 800, height = 600)
 plot(plot_data$Component, plot_data$Eigenvalue, type = "b", 
      xlab = "Component", ylab = "Eigenvalue",
      main = "Scree Plot of Eigenvalues",
-     xlim = c(1, 504), ylim = c(0, max(plot_data$Eigenvalue)),
+     xlim = c(1, 11), ylim = c(0, max(plot_data$Eigenvalue)),
      pch = 19, col = "blue")
 
 # Add grid lines for better readability
 grid()
 
 # Add points and values
-for (i in 1:504) {
+for (i in 1:11) {
   points(i, plot_data$Eigenvalue[i], pch = 19, col = "blue")
   text(i, plot_data$Eigenvalue[i], labels = round(plot_data$Eigenvalue[i], 2), 
        pos = 3, cex = 0.8)
