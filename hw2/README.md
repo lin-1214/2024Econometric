@@ -20,7 +20,7 @@ Let $\hat{E}[Y]$ be the sample average of $Y$, and $\hat{E}[Y | A]$ be the sampl
 The law of iterated expectations implies:
 
 $$
-\hat{E}[Y] = \alpha_1 \hat{E}[Y | X_1 \leq 0.015] + \alpha_2 \hat{E}[Y | X_1 > 0.015]
+\hat{E}[Y] = \alpha_1 \hat{E}[Y | X_1 > 0.015] + \alpha_2 \hat{E}[Y | X_1 \leq 0.015]
 $$
 
 and

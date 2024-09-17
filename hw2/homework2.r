@@ -9,7 +9,7 @@ x_dp <- dt$x_dp # x3
 n = length(y)
 
 # (a)
-alpha_2 <- sum(x_dfy > 0.015) / n
+alpha_2 <- sum(x_dfy <= 0.015) / n
 alpha_1 <- 1 - alpha_2
 paste("alpha_1 =", round(alpha_1, 3))
 paste("alpha_2 =", round(alpha_2, 3))
