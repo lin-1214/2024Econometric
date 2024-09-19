@@ -31,3 +31,9 @@ result of r-squared
 
 plot of r-squared
 ![q4-solution3](./img/r_squared_plot.png)
+
+---
+<div style="page-break-after: always;"></div>
+
+## 5. Source
+[Source Code](https://github.com/lin-1214/2024Econometric/blob/main/hw3/homework3.r)
