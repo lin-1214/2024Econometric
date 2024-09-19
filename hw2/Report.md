@@ -33,5 +33,5 @@ We can then calculate beta by constructing the linear model with X and Y:
 ![q6_sol](./img/q6-2.png)
 
 ## 7. Source Code
-[Source Code](https://github.com/lin-1214/2024Econometric/blob/main/hw1/homework2.r)
+[Source Code](https://github.com/lin-1214/2024Econometric/blob/main/hw2/homework2.r)
 
