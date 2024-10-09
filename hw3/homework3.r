@@ -5,8 +5,8 @@ calculate_beta_hat <- function(y, x) {
 
 calculate_r_squared <- function(y, y_hat) {
   TSS <- sum((y - mean(y))^2)
-  RSS <- sum((y - y_hat)^2)
-  return(1 - RSS / TSS)
+  ESS <- sum((y - y_hat)^2)
+  return(1 - ESS / TSS)
 }
 
 
