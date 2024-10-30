@@ -84,7 +84,8 @@ simulate_and_save <- function(n, dist_type) {
 }
 
 # 1e5 is additional sample size
-n_values <- c(10, 50, 100, 1e5)
+# n_values <- c(10, 50, 100, 1e5)
+n_values <- c(10, 50, 100)
 distributions <- c("normal", "t")
 
 for(n in n_values) {
@@ -94,3 +95,61 @@ for(n in n_values) {
     simulate_and_save(n, dist)
   }
 }
+
+dt <- read.csv("./Equity_Premium.csv")
+y <- dt$y
+ones <- rep(1, 504)
+dfy <- dt$x_dfy
+infl <- dt$x_infl
+svar <- dt$x_svar
+tms <- dt$x_tms
+tbl <- dt$x_tbl
+dfr <- dt$x_dfr
+dp <- dt$x_dp
+ltr <- dt$x_ltr
+ep <- dt$x_ep
+bmr <- dt$x_bmr
+ntis <- dt$x_ntis
+
+x <- cbind(ones, dfy, infl, svar, tms,
+           tbl, dfr, dp, ltr, ep, bmr, ntis)
+
+
+# Part 1
+model <- lm(y ~ (x - 1))
+
+# Part a: Individual Wald tests for each coefficient
+coef_summary <- summary(model)$coefficients
+
+wald_tests <- data.frame(
+  Coefficient = rownames(coef_summary),
+  Estimate = coef_summary[, "Estimate"],
+  Std_Error = coef_summary[, "Std. Error"],
+  t_value = coef_summary[, "t value"],
+  p_value = coef_summary[, "Pr(>|t|)"]
+)
+
+# Print results for part a
+cat("\nPart a: Individual Wald Tests (H0: βj = 0)\n")
+print(wald_tests)
+cat("\nSignificant coefficients at 5% level:\n")
+print(wald_tests[wald_tests$p_value < 0.05, ])
+
+# Part b: Joint Wald test for β1 = 0 and β2 + β3 = 0
+library(car)
+
+# Create constraint matrix R and vector r
+R <- matrix(0, nrow = 2, ncol = length(coef(model)))
+R[1, 1] = 1              # β1 = 0
+R[2, 2:3] = c(1, 1)      # β2 + β3 = 0
+r <- c(0, 0)
+
+# Perform joint Wald test with custom hypothesis names
+joint_test <- linearHypothesis(model, R, r)
+
+# Print results for part b
+cat("\nPart b: Joint Wald Test\n")
+cat("H0: β1 = 0 and β2 + β3 = 0\n")
+print(joint_test)
+
+
