@@ -41,3 +41,7 @@ According to the result of individual Wald tests, we can see that the p-values o
 According to the result of joint Wald tests, we can see that the p-value is less than 0.05, which means we can reject the null hypothesis. The statistical meaning of this result is we reject that $\beta_{1} = 0$ and (or) $\beta_{2} + \beta_{3} = 0$ at 5% significance level. We can see the result is aligned to the result of individual Wald tests of $\beta_{1}$. 
 
 ---
+<div style="page-break-after: always;"></div>
+
+## 3. Source Code
+[Source Code](https://github.com/lin-1214/2024Econometric/blob/main/hw6/homework6.r)
