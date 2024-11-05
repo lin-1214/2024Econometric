@@ -2,6 +2,7 @@
 set.seed(12345)
 
 B <- 1000
+degree_freedom <- 2
 
 # Create img directory if it doesn't exist
 if (!dir.exists("img")) {
@@ -17,7 +18,7 @@ simulate_and_save <- function(n, dist_type) {
     if(dist_type == "normal") {
       y <- rnorm(n, mean = 0, sd = 1)
     } else {
-      y <- rt(n, df = 2)
+      y <- rt(n, df = degree_freedom)
     }
     
     y_bar[b] <- mean(y)
@@ -25,7 +26,7 @@ simulate_and_save <- function(n, dist_type) {
   }
   
   # Create filename
-  dist_name <- ifelse(dist_type == "normal", "normal", "t2")
+  dist_name <- ifelse(dist_type == "normal", "normal", paste0("t", degree_freedom))
   filename <- file.path("img", sprintf("n%d_%s_combined.png", n, dist_name))
   
   png(filename, width = 1200, height = 500)
@@ -41,7 +42,7 @@ simulate_and_save <- function(n, dist_type) {
   dens1 <- density(y_bar)
   y_max1 <- max(max(dens1$y), max(standard_normal)) * 1.2
   
-  dist_label <- ifelse(dist_type == "normal", "N(0,1)", "t(2)")
+  dist_label <- ifelse(dist_type == "normal", "N(0,1)", paste0("t(", degree_freedom, ")"))
   plot_title1 <- sprintf("Distribution of Y_bar (n = %d, %s)", n, dist_label)
   
   plot(dens1, main = plot_title1,
@@ -84,13 +85,13 @@ simulate_and_save <- function(n, dist_type) {
 }
 
 # 1e5 is additional sample size
-# n_values <- c(10, 50, 100, 1e5)
-n_values <- c(10, 50, 100)
+n_values <- c(10, 50, 100, 1e5)
+# n_values <- c(10, 50, 100)
 distributions <- c("normal", "t")
 
 for(n in n_values) {
   for(dist in distributions) {
-    dist_name <- ifelse(dist == "normal", "N(0,1)", "t(2)")
+    dist_name <- ifelse(dist == "normal", "N(0,1)", paste0("t(", degree_freedom, ")"))
     cat("\nSimulating for n =", n, ", distribution:", dist_name, "\n")
     simulate_and_save(n, dist)
   }
