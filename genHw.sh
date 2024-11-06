@@ -19,6 +19,7 @@ cd hw$hw_number
 touch homework$hw_number.r
 touch README.md
 touch Report.md
+mkdir img
 
 if [ "$copy_csv" = true ]; then
     cp ../Equity_Premium.csv ./
