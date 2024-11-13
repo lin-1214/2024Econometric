@@ -78,7 +78,7 @@ for(i in 1:6) {
     
     current_values <- results_df[, i+2]
     
-    if(criteria_names[i] %in% c("AIC", "BIC")) {
+    if(criteria_names[i] %in% c("AIC", "BIC", "Cp")) {
         Q1 <- quantile(current_values, 0.25)
         Q3 <- quantile(current_values, 0.75)
         IQR <- Q3 - Q1
@@ -86,59 +86,64 @@ for(i in 1:6) {
         upper_bound <- Q3 + 1.5 * IQR
         
         valid_points <- current_values >= lower_bound & current_values <= upper_bound
+        valid_values <- current_values[valid_points]
+        valid_indices <- which(valid_points)
+        best_idx <- valid_indices[which.min(valid_values)]
+        
         ylim_range <- range(current_values[valid_points])
         
-        plot(seq_along(current_values)[valid_points], 
-             current_values[valid_points],
+        x_coords <- results_df$n_predictors[valid_points]
+        
+        plot(x_coords, valid_values,
              main = paste(criteria_names[i], "vs Number of Predictors"),
              xlab = "", 
              ylab = "Criterion Value",
-             xaxt = "n",
              pch = 16,      
              col = "gray",
              ylim = ylim_range)
+             
+        points(results_df$n_predictors[best_idx], current_values[best_idx], 
+               col = "red", pch = 16, cex = 2)
+        points(results_df$n_predictors[best_idx], current_values[best_idx], 
+               col = "red", pch = 1, cex = 3)
     } else {
-        plot(current_values,
+        x_coords <- results_df$n_predictors
+        
+        plot(x_coords, current_values,
              main = paste(criteria_names[i], "vs Number of Predictors"),
              xlab = "", 
              ylab = "Criterion Value",
-             xaxt = "n",
              pch = 16,      
              col = "gray")
-    }
-    
-    abline(v = which(diff(results_df$n_predictors) != 0), 
-           col = "lightgray", lty = 2)
-    
-    if(criteria_names[i] %in% c("R2", "adj_R2")) {
-        best_idx <- which.max(results_df[, i+2])
-        legend_pos <- "bottomright"
-    } else {
-        best_idx <- which.min(results_df[, i+2])
-        legend_pos <- "topright"
-    }
-    
-    if(criteria_names[i] %in% c("AIC", "BIC")) {
-        if(current_values[best_idx] >= lower_bound && 
-           current_values[best_idx] <= upper_bound) {
-            points(best_idx, current_values[best_idx], 
-                   col = "red", pch = 16, cex = 2)
-            points(best_idx, current_values[best_idx], 
-                   col = "red", pch = 1, cex = 3)
+             
+        if(criteria_names[i] %in% c("R2", "adj_R2")) {
+            best_idx <- which.max(current_values)
+            legend_pos <- "bottomright"
+        } else if(criteria_names[i] %in% c("AIC", "BIC", "Cp")) {
+            current_values <- criteria_results[,i]
+            Q1 <- quantile(current_values, 0.25)
+            Q3 <- quantile(current_values, 0.75)
+            IQR <- Q3 - Q1
+            lower_bound <- Q1 - 1.5 * IQR
+            upper_bound <- Q3 + 1.5 * IQR
+            
+            valid_points <- current_values >= lower_bound & current_values <= upper_bound
+            valid_values <- current_values[valid_points]
+            valid_indices <- which(valid_points)
+            best_idx <- valid_indices[which.min(valid_values)]
+            legend_pos <- "topright"
+        } else {
+            best_idx <- which.min(current_values)
+            legend_pos <- "topright"
         }
-    } else {
-        points(best_idx, current_values[best_idx], 
+        
+        points(results_df$n_predictors[best_idx], current_values[best_idx], 
                col = "red", pch = 16, cex = 2)
-        points(best_idx, current_values[best_idx], 
+        points(results_df$n_predictors[best_idx], current_values[best_idx], 
                col = "red", pch = 1, cex = 3)
     }
     
-    unique_n_pred <- unique(results_df$n_predictors)
-    pred_positions <- sapply(unique_n_pred, function(n) {
-        mean(which(results_df$n_predictors == n))
-    })
-    axis(1, at = pred_positions, labels = unique_n_pred)
-    
+    axis(1, at = unique(results_df$n_predictors))
     mtext("Number of Predictors", side = 1, line = 2.5)
     
     legend(legend_pos, 
@@ -159,6 +164,19 @@ cat("Best models:\n")
 for(i in 1:6) {
     if(criteria_names[i] %in% c("R2", "adj_R2")) {
         best_idx <- which.max(criteria_results[,i])
+    } else if(criteria_names[i] %in% c("AIC", "BIC", "Cp")) {
+        # Filter outliers first
+        current_values <- criteria_results[,i]
+        Q1 <- quantile(current_values, 0.25)
+        Q3 <- quantile(current_values, 0.75)
+        IQR <- Q3 - Q1
+        lower_bound <- Q1 - 1.5 * IQR
+        upper_bound <- Q3 + 1.5 * IQR
+        
+        valid_points <- current_values >= lower_bound & current_values <= upper_bound
+        valid_values <- current_values[valid_points]
+        valid_indices <- which(valid_points)
+        best_idx <- valid_indices[which.min(valid_values)]
     } else {
         best_idx <- which.min(criteria_results[,i])
     }

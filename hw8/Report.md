@@ -13,7 +13,7 @@
 #### Plot of R2
 <img src="./img/R2_plot.png" width="600" alt="R2">
 
-#### Plot of adj_R2
+#### Plot of Adjusted_R2
 <img src="./img/adj_R2_plot.png" width="600" alt="adj_R2">
 
 <p>Observing the plots of R2 and adjusted R2, we can see the trend of R2 is the same as adj_R2, as the model complexity increases, criterion value of R2 and adj_R2 tend to increase. The difference is that the criterion value of adjusted R2 is affected by the model complexity, while the criterion value of R2 is not. The best model selected by R2 and adj_R2 are the model that has the largest criterion value.</p>
@@ -42,6 +42,16 @@
 
 #### Result of Model Selection
 <img src="./img/model_selection.png" width="600" alt="model_selection">
+
+Number of predictors that the best model selected
+- R2: 11 (predictors)
+- Adjusted_R2: 8
+- AIC: 5
+- BIC: 2
+- Cp: 5
+- LOOCV: 5
+
+Also, we can see that AIC, Cp, and LOOCV method chooses the same model respectively. 
 
 ## 4. Source Code
 [Source Code](https://github.com/lin-1214/2024Econometric/blob/main/hw8/homework8.r)
