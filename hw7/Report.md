@@ -28,3 +28,5 @@ The local power analysis reveals:
 
 These findings confirm that the test is reliable for practical applications, providing good size control while maintaining strong power against both fixed and local alternatives.
 
+## 3. Source Code
+[Source Code](https://github.com/lin-1214/2024Econometric/blob/main/hw7/homework7.r)
