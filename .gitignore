@@ -1,0 +1,48 @@
+# IDE and Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# R specific files
+.RData
+.Rhistory
+
+# Dependencies and packages
+node_modules/
+vendor/
+*.log
+
+# Build outputs
+dist/
+build/
+out/
+*.class
+*.pyc
+__pycache__/
+
+# Environment and config files
+.env
+.env.local
+.env.*.local
+*.env
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# System files
+Thumbs.db
+.DS_Store
+*.bak
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: Project specific
+coverage/
+.nyc_output/
