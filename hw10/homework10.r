@@ -75,15 +75,16 @@ lpm_pred <- x %*% init_values
 
 # Plot results
 png("./img/plot.png", width = 800, height = 600)
-plot(lpm_pred, type = "l", col = "blue", ylim = c(0, 1),
+plot(probit_pred, type = "l", col = adjustcolor("red", alpha=0.5), ylim = c(0, 1),
      main = "Predicted Probabilities of Bear Market",
-     xlab = "Time", ylab = "Probability", lwd = 3)
-lines(probit_pred, col = "red", lwd = 3)
-lines(logit_pred, col = "green", lwd = 3)
+     xlab = "Time", ylab = "Probability", lwd = 2)
+lines(logit_pred, col = adjustcolor("darkgreen", alpha=0.5), lwd = 2)
+lines(lpm_pred, col = adjustcolor("blue", alpha=0.5), lwd = 2)
+lines(y, col = adjustcolor("black", alpha=0.5), lwd = 2, type = "s")
 legend("topright", 
-       legend = c("Linear Prob", "Probit", "Logit"),
-       col = c("blue", "red", "green"),
-       lwd = 3,
+       legend = c("Probit", "Logit", "Linear Prob", "Actual"),
+       col = c("red", "darkgreen", "blue", "black"),
+       lwd = 2,
        lty = 1)
 dev.off()
 
