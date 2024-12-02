@@ -19,10 +19,10 @@ y <- rep(1, nrow(dt))
 bull_periods <- list(
   c(20:80),     # August 1982 to August 1987
   c(84:231),    # December 1987 to March 2000
-  c(249:252),   # September 2001 to January 2002
+  c(249:253),   # September 2001 to January 2002
   c(262:322),   # October 2002 to October 2007
   c(339:470),   # March 2009 to February 2020
-  c(471:492),   # March 2020 to January 2022
+  c(471:493),   # March 2020 to January 2022
   c(502:504)    # October 2022 to December 2022
 )
 
