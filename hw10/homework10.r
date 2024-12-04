@@ -7,7 +7,7 @@ tbl <- dt$x_tbl
 dfr <- dt$x_dfr
 dp <- dt$x_dp
 ltr <- dt$x_ltr
-ep <- dt$ep
+ep <- dt$x_ep
 bmr <- dt$x_bmr
 ntis <- dt$x_ntis
 
